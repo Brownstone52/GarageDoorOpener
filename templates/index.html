@@ -4,12 +4,26 @@
 	</head>
 	<center>
 		<body>
-			<button id="open" type="button" style="width: 50vmax; height: 50vmax;font-size: 800%">Open</button>
+			<button id="open" type="button" style="width: 50vmax; height: 50vmax;font-size: 800%"></button>
 			<p id="temperature"></p>
 		</body>
 	</center>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="static/temperature.js"></script>
+	<script src="static/temperatureToColorMapper.js"></script>
 	<script>
+		var updateButton = function() {
+				$.getJSON("temperatureData", (data)=>{
+					let temp = new Temperature(data.temperature).Farenheit.toFixed(2)
+					$("#open").text(temp)
+					
+					let rgb = new TemperatureToColorMapper().getColor(temp)
+					let test = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.3)`
+					console.log(test)
+					$("#open").css({"background-color":test})
+				})
+		}
+	
 		$(document).ready(function(){
 			$("#open").click(function(){
 				console.log('clicked');
@@ -19,6 +33,9 @@
 					$("#open").prop("disabled", false);
 				});	
 			});
+		
+			updateButton()
+			setInterval(updateButton, 5000)
 		});
 	</script>
 </html>
