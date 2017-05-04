@@ -18,9 +18,8 @@
 					$("#open").text(temp)
 					
 					let rgb = new TemperatureToColorMapper().getColor(temp)
-					let test = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.3)`
-					console.log(test)
-					$("#open").css({"background-color":test})
+					let rgbCss = `rgba(${Math.round(rgb.r)}, ${Math.round(rgb.g)}, ${Math.round(rgb.b)}, 0.7)`
+					$("#open").css({"background-color": rgbCss})
 				})
 		}
 	
