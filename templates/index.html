@@ -1,16 +1,18 @@
 <html>
 	<head>
 		<title>	Garage Door Opener</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="static/temperature.js"></script>
+		<script src="static/temperatureToColorMapper.js"></script>
 	</head>
-	<center>
-		<body>
-			<button id="open" type="button" style="width: 50vmax; height: 50vmax;font-size: 800%"></button>
-			<p id="temperature"></p>
-		</body>
-	</center>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="static/temperature.js"></script>
-	<script src="static/temperatureToColorMapper.js"></script>
+	<body>
+		<div class="container" style="padding: 100px">
+			<button id="open" type="button" class="btn btn-primary btn-block"></button>
+		</div>
+	</body>
 	<script>
 		var updateButton = function() {
 				$.getJSON("temperatureData", (data)=>{
@@ -19,7 +21,7 @@
 					
 					let rgb = new TemperatureToColorMapper().getColor(temp)
 					let rgbCss = `rgba(${Math.round(rgb.r)}, ${Math.round(rgb.g)}, ${Math.round(rgb.b)}, 0.7)`
-					$("#open").css({"background-color": rgbCss})
+					$("#open").css({"background-color": rgbCss}).css({"height": "100%"}).css({"font-size": "5em"})
 				})
 		}
 	
