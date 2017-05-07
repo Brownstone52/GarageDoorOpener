@@ -4,4 +4,8 @@ class Temperature {
 	}
 
 	get Farenheit() { return this._tempInCelcius * 1.8 + 32 }
+
+	static fromKelvin(tempInKelvin) {
+		return new Temperature(tempInKelvin - 273.15)
+	}
 }
