@@ -4,6 +4,10 @@ from flask import jsonify
 from garage import Garage
 from Temperature import GarageEnvironment
 
+from tornado.wsgi import WSGIContainer
+from tornado.httpserver import HTTPServer
+from tornado.ioloop import IOLoop
+
 app = Flask(__name__)
 
 garage = Garage()
@@ -23,5 +27,6 @@ def getTemperatureData():
 	garageEnvironment.FetchData()
 	return jsonify(temperature=garageEnvironment.Temperature, humidity=garageEnvironment.Humidity)
 
-if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0', port=80)
+http_server = HTTPServer(WSGIContainer(app))
+http_server.listen(80)  # serving on port 5000
+IOLoop.instance().start()
