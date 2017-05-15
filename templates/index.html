@@ -6,7 +6,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="static/temperature.js"></script>
-		<script src="static/temperatureToColorMapper.js"></script>
+		<script src="static/colorMapper.js"></script>
 		<script src="static/view.js"></script>
 	</head>
 	<body>
@@ -16,8 +16,8 @@
 	</body>
 	<script>
 		$(document).ready(function(){
-			var tempView = new TemperatureView()
-
+			var views = [new TemperatureView(), new HumidityView()]
+			var iteration = 0
 			$("#open").click(function(){
 				console.log('clicked');
 				$("#open").prop("disabled", true);
@@ -27,8 +27,10 @@
 				});	
 			});
 		
-			tempView.render()
-			setInterval(tempView.render, 5000)
+			views[0].render()
+			setInterval(() => {
+				views[iteration % views.length].render()
+			}, 5000)
 		});
 	</script>
 </html>
