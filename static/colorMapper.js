@@ -2,7 +2,7 @@
 class TemperatureToColorMapper {
 	constructor() {
 		this._maxTemp = 100
-		this._minTemp = 40
+		this._minTemp = -20
 	}
 
 	getColor(temperature) {
