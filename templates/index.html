@@ -30,7 +30,7 @@
 				});	
 			});
 		
-			views[0].render()
+			new DefaultView().render()
 			setInterval(() => {
 				views[iteration++ % views.length].render()
 			}, 5000)

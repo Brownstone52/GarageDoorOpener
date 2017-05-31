@@ -1,3 +1,11 @@
+class DefaultView {
+	render() {
+		$("#open").text("Press")
+		$("#open").css({"background-color": "rgb(255, 72, 0)"}).css({"height": "100%"}).css({"font-size": "5em"})
+		$("body").css({"background-color": "rgb(0, 72, 0)"})
+	}
+}
+
 class TemperatureView {
 	constructor(dataAggregator) {
 		this._dataAggregator = dataAggregator
