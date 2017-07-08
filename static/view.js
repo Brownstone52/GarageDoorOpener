@@ -1,7 +1,7 @@
 class DefaultView {
 	render() {
 		$("#open").text("Press")
-		$("#open").css({"background-color": "rgb(255, 72, 0)"}).css({"height": "100%"}).css({"font-size": "5em"})
+		$("#open").css({"background-color": "rgb(255, 72, 0)"}).css({"height": "90%"}).css({"font-size": "5em"})
 		$("body").css({"background-color": "rgb(0, 72, 0)"})
 	}
 }
@@ -20,7 +20,7 @@ class TemperatureView {
  		$("#open").text(`${temp} F`)
 		let rgb = new TemperatureToColorMapper().getColor(temp)
 		let rgbCss = `rgba(${Math.round(rgb.r)}, ${Math.round(rgb.g)}, ${Math.round(rgb.b)}, 1)`
-		$("#open").css({"background-color": rgbCss}).css({"height": "100%"}).css({"font-size": "5em"})
+		$("#open").css({"background-color": rgbCss}).css({"height": "90%"}).css({"font-size": "5em"})
 
 		let localTemp = this._dataAggregator.WeatherData.temperature
 		rgb = new TemperatureToColorMapper().getColor(localTemp)
@@ -44,7 +44,7 @@ class HumidityView {
 
 		let rgb = new HumidityToColorMapper().getColor(humidity)
 		let rgbCss = `rgba(${Math.round(rgb.r)}, ${Math.round(rgb.g)}, ${Math.round(rgb.b)}, 1)`
-		$("#open").css({"background-color": rgbCss}).css({"height": "100%"}).css({"font-size": "5em"})
+		$("#open").css({"background-color": rgbCss}).css({"height": "90%"}).css({"font-size": "5em"})
 
 		let localHumidity = this._dataAggregator.WeatherData.humidity
 		rgb = new HumidityToColorMapper().getColor(localHumidity)
