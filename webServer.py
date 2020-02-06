@@ -24,8 +24,11 @@ def openGarage():
 
 @app.route('/temperatureData', methods=['GET'])
 def getTemperatureData():
-	garageEnvironment.FetchData()
-	return jsonify(temperature=garageEnvironment.Temperature, humidity=garageEnvironment.Humidity)
+	try:
+		garageEnvironment.FetchData()
+		return jsonify(temperature=garageEnvironment.Temperature, humidity=garageEnvironment.Humidity)
+	except Exception as e:
+		return str(e)
 
 http_server = HTTPServer(WSGIContainer(app))
 http_server.listen(80)  # serving on port 5000

@@ -22,7 +22,6 @@
 			var views = [new TemperatureView(dataAggregator), new HumidityView(dataAggregator)]
 			var iteration = 0
 			$("#open").click(function(){
-				console.log('clicked');
 				$("#open").prop("disabled", true);
 
 				$.post("pressGarageDoorButton").always(function(){
