@@ -17,10 +17,6 @@
 	</body>
 	<script>
 		$(document).ready(function(){
-			var dataAggregator = new DataAggregator()
-			dataAggregator.startCollecting()
-			var views = [new TemperatureView(dataAggregator), new HumidityView(dataAggregator)]
-			var iteration = 0
 			$("#open").click(function(){
 				$("#open").prop("disabled", true);
 
@@ -28,11 +24,20 @@
 					$("#open").prop("disabled", false);
 				});	
 			});
-		
+
 			new DefaultView().render()
-			setInterval(() => {
-				views[iteration++ % views.length].render()
-			}, 5000)
+		
+			$.getJSON("featureFlags", (data)=> {
+				if(data.temperature_feature_flag) {
+					var dataAggregator = new DataAggregator()
+					dataAggregator.startCollecting()
+					var views = [new TemperatureView(dataAggregator), new HumidityView(dataAggregator)]
+					var iteration = 0
+					setInterval(() => {
+						views[iteration++ % views.length].render()
+					}, 5000)
+				}
+			})
 		});
 	</script>
 </html>
