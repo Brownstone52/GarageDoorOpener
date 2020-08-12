@@ -4,12 +4,10 @@ import time
 class Garage:
 
 	GPIO.setmode(GPIO.BCM)
-	GPIO.setup(7, GPIO.OUT)
-	GPIO.output(7, GPIO.LOW)
-	def sayHello(self):
-		return "HELLO WORLD"
+	GPIO.setup(21, GPIO.OUT)
+	GPIO.output(21, GPIO.LOW)
 	
 	def PressGarageDoorButton(self):
-		GPIO.output(7, GPIO.HIGH)
+		GPIO.output(21, GPIO.HIGH)
 		time.sleep(2)
-		GPIO.output(7, GPIO.LOW)
+		GPIO.output(21, GPIO.LOW)
